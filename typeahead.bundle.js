@@ -1515,8 +1515,12 @@
                 this.input.clearHint();
                 this.eventBus.trigger("closed");
             },
+            //tweak to allow show all content on focused
             _onFocused: function onFocused() {
                 this.isActivated = true;
+                var val = this.input.getInputValue();
+                var query = Input.normalizeQuery(val);
+                this.dropdown.update(query);
                 this.dropdown.open();
             },
             _onBlurred: function onBlurred() {
